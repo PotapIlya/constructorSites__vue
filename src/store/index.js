@@ -10,12 +10,15 @@ export default new Vuex.Store({
     asideMenu,
     allSite: [
       {           // section
+        section: {
+          column: 1,
+        },
         rows: [  // rows
           [     // row
             {
               id: 'button_1',
               parentId: 'buttons',
-              text: '12',
+              text: 'dwadaw',
               style: {
                 background_color: '#000000',
                 color: '#f9ff00',
@@ -48,6 +51,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setEditPanel: (state, el) => {
+      // перписать под более универсальный вариант, чтобы можно просто заполнять данными и под определенную запись 
       const {idxSection, idxRow, idxColumn} = el;
 
       state.editPanel = state.allSite[idxSection].rows[idxRow][idxColumn];

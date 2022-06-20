@@ -12,7 +12,7 @@
 <script>
   import Aside from "@/components/basic/aside";
   import Content from "@/components/content";
-  import EditPanel from "@/components/edit-panel";
+  import EditPanel from "@/components/edit-panel/index";
   export default {
     name: 'Index',
     components: {

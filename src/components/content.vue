@@ -5,6 +5,7 @@
 
         <template v-if="getAllSite.length">
             <section v-for="(section, i) in getAllSite" :key="i">
+                <ButtonEditSection />
 
                <template v-if="section.rows.length">
                    <div
@@ -32,8 +33,12 @@
 
 <script>
   import { mapGetters } from 'vuex';
+  import ButtonEditSection from "@/components/edit-panel/button-edit-section";
   export default {
     name: "Content",
+    components: {
+      ButtonEditSection
+    },
     computed: {
       ...mapGetters([
         'getAllSite',
