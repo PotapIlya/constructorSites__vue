@@ -34,10 +34,6 @@ export default new Vuex.Store({
               }
             },
           ],
-          [
-            {id: 'button_2', parentId: 'buttons'},
-            {id: 'button_2', parentId: 'buttons'},
-          ],
         ],
       }
 
