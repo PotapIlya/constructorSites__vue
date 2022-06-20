@@ -2,7 +2,7 @@
 
 
 
-    <ul v-if="Object.keys(value).length">
+    <ul>
         <li v-if="value.background_color">
             <label for="">
                 <span>Текст за элементом</span>

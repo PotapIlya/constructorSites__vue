@@ -1,5 +1,5 @@
 <template>
-    <ul v-if="input">
+    <ul>
         <li>
             <label for="">
                 <span>Текст на элементе</span>

@@ -51,10 +51,18 @@ export default new Vuex.Store({
   },
   mutations: {
     setEditPanel: (state, el) => {
-      // перписать под более универсальный вариант, чтобы можно просто заполнять данными и под определенную запись 
-      const {idxSection, idxRow, idxColumn} = el;
+      console.log(el)
+      switch (el.type) {
 
-      state.editPanel = state.allSite[idxSection].rows[idxRow][idxColumn];
+        case 'button-edit-section':
+          state.editPanel = state.allSite[el.indexSection].section;
+          break;
+
+        case 'element':
+          const {idxSection, idxRow, idxColumn} = el.coords;
+          state.editPanel = state.allSite[idxSection].rows[idxRow][idxColumn];
+          break;
+      }
     },
     closeEditPanel: (state) => {
       state.editPanel = {};

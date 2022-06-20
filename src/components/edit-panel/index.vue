@@ -3,13 +3,19 @@
         <div v-if="Object.keys(confEditPanel).length">
             {{ confEditPanel }}
 
-
-                <editText :value="confEditPanel.text" v-model="confEditPanel.text" />
-                <editStyle :value="confEditPanel.style" />
-
-                <editSection :value="confEditPanel.section" />
-
-
+                <editText
+                        v-if="confEditPanel.text"
+                        :value="confEditPanel.text"
+                        v-model="confEditPanel.text"
+                />
+                <editStyle
+                        v-if="confEditPanel.style"
+                        :value="confEditPanel.style"
+                />
+                <editSection
+                        v-if="confEditPanel.section"
+                        :value="confEditPanel.section"
+                />
 
             <button @click="$store.commit('closeEditPanel')">Close</button>
         </div>

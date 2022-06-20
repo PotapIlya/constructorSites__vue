@@ -5,7 +5,7 @@
 
         <template v-if="getAllSite.length">
             <section v-for="(section, i) in getAllSite" :key="i">
-                <ButtonEditSection />
+                <ButtonEditSection :indexSection="i" />
 
                <template v-if="section.rows.length">
                    <div
@@ -16,11 +16,15 @@
 
                             v-html="renderHtml(row)"
 
-                            @click="infoEl(Object.assign({
-                                idxSection: i,
-                                idxRow: j,
-                                idxColumn: k,
-                            }, row))"
+                            @click="infoEl({
+                                coords: {
+                                   idxSection: i,
+                                    idxRow: j,
+                                    idxColumn: k,
+                                },
+                                ...row,
+                                type: 'element'
+                            })"
                        />
                    </div>
                </template>
