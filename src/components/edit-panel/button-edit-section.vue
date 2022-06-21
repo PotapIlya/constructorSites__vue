@@ -1,12 +1,13 @@
 <template>
     <div class="edit-section__button">
-        <button @click="$store.commit('setEditPanel', {
-          indexSection,
-          type: 'button-edit-section'
-        })"
-        >
-            edit
+        <button v-if="!getEditGrid"
+								@click="$store.commit('changeStatusEditGrid', true)">
+            active edit grid
         </button>
+				<button v-else
+								@click="$store.commit('changeStatusEditGrid', false)">
+					disable edit grid
+				</button>
     </div>
 </template>
 
@@ -14,10 +15,11 @@
   export default {
     name: "button-edit-section",
     props: {
-      indexSection: {
-        required: true,
-        type: Number
-      }
-    }
+    },
+		computed: {
+			getEditGrid(){
+				return this.$store.getters.getEditGrid;
+			}
+		}
   }
 </script>

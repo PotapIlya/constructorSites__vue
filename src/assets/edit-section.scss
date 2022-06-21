@@ -1,5 +1,9 @@
 section{
   position: relative;
+	min-height: 100px;
+	display: flex;
+	flex-direction: column;
+	justify-content: end;
 }
 .edit-section__button{
   position: absolute;

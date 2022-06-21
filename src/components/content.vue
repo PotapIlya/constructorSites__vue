@@ -1,25 +1,25 @@
 <template>
     <div class="content">
         <h1 style="text-align: center">Content</h1>
+				<ButtonEditSection />
 
         <template v-if="getAllSite.length">
             <section v-for="(section, i) in getAllSite" :key="i">
-<!--                <ButtonEditSection :indexSection="i" />-->
+
 
                <template v-if="section.rows.length">
                    <div
                        v-for="(rows, j) in section.rows" :key="j"
                        class="d-flex"
                    >
-
                        <draggable class="draggable__container d-flex"
                                   :list="rows"
                                   @start="dragging = true"
                                   @end="dragging = false"
                                   :move="log"
+																	:disabled="getEditGrid"
                        >
                            <draggableEl
-                                   :draggable="dragging"
                                class="w-6"
                                v-for="(row, k) in rows" :key="k"
                                :value="{
@@ -32,11 +32,33 @@
                                }"
                            />
                        </draggable>
-
+										 <button v-if="getEditGrid"
+														 @click="$store.commit('editGridToAddSite', {
+														 	 coords: {idxSection: i,	idxRow: j },
+															 type: 'element'
+														 })"
+										 >
+											 add el to row
+										 </button>
                    </div>
+
+								 <button v-if="getEditGrid"
+												 @click="$store.commit('editGridToAddSite', {
+													 coords: {idxSection: i },
+													 type: 'row'
+												 })"
+								 >
+									 add new row
+								 </button>
                </template>
 
             </section>
+					<button v-if="getEditGrid"
+									@click="$store.commit('editGridToAddSite', {
+									 type: 'section',
+									 coords: {}
+								 })"
+					>add new section</button>
         </template>
 
     </div>
@@ -59,16 +81,14 @@
     computed: {
       ...mapGetters([
         'getAllSite',
+				'getEditGrid'
       ]),
     },
     data: () => ({
       dragging: false,
+			statusDrop: false,
     }),
     mounted() {
-      // this.$on('changeDraggable', status => {
-      //   console.log(status)
-      //   this.draggable = status;
-      // })
     },
     watch: {
       //

@@ -12,10 +12,10 @@
                         v-if="confEditPanel.style"
                         :value="confEditPanel.style"
                 />
-                <editSection
-                        v-if="confEditPanel.section"
-                        :value="confEditPanel.section"
-                />
+<!--                <editSection-->
+<!--                        v-if="confEditPanel.section"-->
+<!--                        :value="confEditPanel.section"-->
+<!--                />-->
 
             <button @click="$store.commit('closeEditPanel')">Close</button>
         </div>

@@ -4,13 +4,25 @@
                 class="d-flex justify-content-center"
             v-html="renderHtml(value.row)"
             @click="infoEl({
-                ...value.coords,
+                coords: value.coords,
                 ...value.row,
                 type: 'element'
             })"
     />
-        <button @mousedown="mouse" class="draggable__el-btn draggable__el-btn-left">12</button>
-        <button class="draggable__el-btn draggable__el-btn-right">12</button>
+<!--        <button v-if="getEditGrid"-->
+<!--					@mousedown="mouse(true)"-->
+<!--					@mouseup="mouse(false)"-->
+<!--					class="draggable__el-btn draggable__el-btn-left"-->
+<!--				>-->
+<!--					12-->
+<!--				</button>-->
+<!--        <button v-if="getEditGrid"-->
+<!--					@mousedown="mouse(true)"-->
+<!--					@mouseup="mouse(false)"-->
+<!--					class="draggable__el-btn draggable__el-btn-right"-->
+<!--				>-->
+<!--					12-->
+<!--				</button>-->
     </div>
 </template>
 <script>
@@ -19,20 +31,20 @@
     export default {
       name: 'draggable-el',
       props: {
-        value: {
-          type: Object,
-          required: true,
-        }
+				value: {
+					type: Object,
+					required: true,
+				}
       },
       computed: {
-          ...mapGetters([
-            'getAsideMenu',
-          ]),
+				...mapGetters([
+					'getAsideMenu',
+					'getEditGrid'
+				]),
       },
       methods: {
-        mouse(e) {
-          // console.log(e)
-          // this.$emit('changeDraggable', true)
+        mouse(status) {
+          // console.log(status)
         },
         infoEl(el){
           // console.log(el)

@@ -1,0 +1,30 @@
+
+.draggable {
+	&__container {
+		width: 100%;
+	}
+	&__el{
+		position: relative;
+
+		&-btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			//opacity: 0;
+			transition: .3s;
+
+			&:hover{
+				opacity: 1;
+				transition: .3s;
+			}
+
+			&-left {
+				left: 0;
+			}
+
+			&-right {
+				right: 0;
+			}
+		}
+	}
+}
